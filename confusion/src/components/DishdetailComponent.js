@@ -14,7 +14,7 @@ class DishDetail extends Component {
 
                 return (
                     <li key={com.id}>
-                        <span className="text">{com.comment} <p>-- {com.author}, {com.date}</p></span>
+                        <span className="text">{com.comment} <p>-- {com.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(com.date)))}</p></span>
                     </li>
                 );
             });
@@ -56,7 +56,11 @@ class DishDetail extends Component {
     render() {
 
         if (this.props.dish != null) {
-            return (this.renderDish(this.props.dish));
+            return (
+                <div className="container">
+                    {this.renderDish(this.props.dish)}
+                </div>
+            );
 
         }
 
