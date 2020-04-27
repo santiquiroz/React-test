@@ -3,6 +3,7 @@ import Home from './HomeComponent';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
 import Header from './HeaderComponent'
 import Footer from './FooterComponent';
 import DishDetail from './DishdetailComponent';
@@ -45,6 +46,8 @@ class Main extends Component {
                   comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
             );
           };
+        
+        
         return (
             <div>
                 <Header />
@@ -53,6 +56,7 @@ class Main extends Component {
                     <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}></Menu>} />
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path='/contactus' component={Contact} />
+                    <Route exact path='/aboutus' component={() => <About leaders={this.state.leaders}></About>} />
                     <Redirect to ="/home"></Redirect>
                 </Switch>
                 <Footer />
